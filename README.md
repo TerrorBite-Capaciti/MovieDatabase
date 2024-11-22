@@ -110,7 +110,7 @@ This project is licensed under the MIT License.
 We’d love to hear your thoughts!
 Feel free to open an issue or contribute to the project.
 
-Crafted with ❤️ by Team MovieDatabase
+Crafted with ❤️ by Team TerrorBite
 
 Let me know if you’d like further refinements! 🚀
 
@@ -242,7 +242,7 @@ This project is licensed under the MIT License.
 We’d love to hear from you!
 Feel free to open an issue or contribute to the project via pull requests.
 
-Crafted with ❤️ by Team MovieDatabase
+Crafted with ❤️ by Team TerrorBite
 
 This version is now clearly divided into sections, making it both visually appealing and informative! 🚀 Let me know if you'd like more tweaks.
 
