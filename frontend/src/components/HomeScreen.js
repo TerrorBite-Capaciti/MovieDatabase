@@ -18,13 +18,13 @@ const HomeScreen = () => {
           <li>
             <Link to="/home" className="nav-item">
               <FontAwesomeIcon icon={faHome} className="nav-icon" />
-              <span className="nav-text">Home</span>
+              <span className="nav-text">HOME</span>
             </Link>
           </li>
           <li>
             <Link to="/watchlist" className="nav-item">
               <FontAwesomeIcon icon={faBookmark} className="nav-icon" />
-              <span className="nav-text">Watchlist</span>
+              <span className="nav-text">WATCHLIST</span>
             </Link>
           </li>
           <li className="profile-dropdown">
@@ -43,6 +43,11 @@ const HomeScreen = () => {
                 <Link to="/logout">Logout</Link>
               </li>
             </ul>
+          </li>
+          <li>
+            <Link to="/home" className="nav-item">
+              <span className="nav-text"></span>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -82,9 +87,8 @@ const homeScreenStyles = `
   .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items:;
     background: rgba(0, 0, 0, 0.85);
-    padding: 20px 40px;
     position: fixed;
     top: 0;
     width: 100%;
