@@ -102,6 +102,7 @@ const homeScreenStyles = `
     display: flex;
     gap: 30px;
     align-items: center;
+    list-style-type: none; 
   }
 
   .nav-item {
@@ -207,7 +208,7 @@ const homeScreenStyles = `
   .search-button {
     padding: 15px 25px;
     background: linear-gradient(135deg, #19FB7, #AAABAB);
-    color: #050000;
+    color: grey;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
