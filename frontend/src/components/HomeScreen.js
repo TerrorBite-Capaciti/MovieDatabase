@@ -70,7 +70,7 @@ const HomeScreen = () => {
 // Styling
 const homeScreenStyles = `
   .home-screen {
-    background: linear-gradient(135deg, #050000, #909292);
+    background: black;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
@@ -93,8 +93,8 @@ const homeScreenStyles = `
   }
 
   .logo-image {
-    height: 60px;
-    width: auto;
+    height: 80px;
+    width: 70%;
     filter: drop-shadow(0 0 8px #19FB7);
   }
 
