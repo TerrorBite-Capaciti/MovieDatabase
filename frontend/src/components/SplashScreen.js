@@ -1,26 +1,32 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// SplashScreen.js
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importing useNavigate for navigation
 
 const SplashScreen = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
-    setTimeout(() => {
-      navigate("/home");
-    }, 3000); // 3-second splash screen
-  }, [navigate]);
+    // Set timeout to navigate after 3 seconds
+    const timer = setTimeout(() => {
+      navigate('/home'); // Redirect to HomeScreen after 3 seconds
+    }, 3000); // 3000ms = 3 seconds
+
+    // Clean up timeout if the component unmounts
+    return () => clearTimeout(timer);
+  }, [navigate]); // Dependency array ensures it only runs once
 
   return (
-    <motion.div
-      className="splash-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+    <div
+      className="splash-screen flex justify-center items-center h-screen bg-[#050000]"
+      style={{ backgroundColor: '#050000' }}
     >
-      <h1 className="text-4xl font-bold text-pink-500">Movie Database</h1>
-      <p className="text-xl text-gray-500">Loading...</p>
-    </motion.div>
+      <div
+        className="logo text-white font-bold text-5xl"
+        style={{ color: '#19FB7' }}
+      >
+        MovieDB
+      </div>
+    </div>
   );
 };
 

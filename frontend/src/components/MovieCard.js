@@ -1,22 +1,20 @@
+// MovieCard.js
+
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const MovieCard = ({ movie }) => {
   return (
-    <motion.div
-      className="movie-card relative w-40 h-60 bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className="movie-card bg-[#909292] rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
-        className="w-full h-full object-cover"
+        className="w-full h-72 object-cover"
       />
-      <div className="overlay absolute inset-0 bg-black opacity-50 flex items-center justify-center text-center">
-        <p className="text-xl">{movie.title}</p>
+      <div className="movie-info p-4 text-center">
+        <h3 className="text-xl font-semibold text-[#050000]">{movie.title}</h3>
+        <p className="text-sm text-[#c4c4c4]">{movie.release_date}</p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
