@@ -1,0 +1,341 @@
+/* Splash Screen Styles */
+.splash-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #050000;
+    position: relative;
+    animation: fadeIn 3s ease-in-out, scaleUp 2s ease-in-out;
+    overflow: hidden;
+}
+
+.splash-screen .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: textSlideIn 2s ease-in-out;
+}
+
+.splash-screen .logo-image {
+    max-width: 500px;
+    animation: logoBounce 1s infinite, glow 1.5s infinite alternate, float 3s ease-in-out infinite;
+}
+
+/* Keyframe Animations for SplashScreen */
+@keyframes float {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px "#19FB7", 0 0 10px "#19FB7", 0 0 15px "#19FB7";
+    }
+    100% {
+        box-shadow: 0 0 20px "#19FB7", 0 0 30px "#19FB7", 0 0 50px "#19FB7";
+    }
+}
+
+@keyframes textSlideIn {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Home Screen Styles */
+.home-screen {
+    background: black;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .logo-image {
+    height: 80px;
+    width: 70%;
+    filter: drop-shadow(0 0 8px "#19FB7");
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    list-style-type: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-item .nav-icon {
+    font-size: 1.5rem;
+    color: "#19FB7";
+    transition: transform 0.2s, color 0.3s;
+}
+
+.nav-item .nav-text {
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+    color: #FFD700;
+    transform: scale(1.2);
+}
+
+.nav-item:hover .nav-text {
+    color: #FFD700;
+    text-shadow: 0 0 8px #FFD700;
+}
+
+.profile-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.profile-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    color: "#19FB7";
+    text-shadow: 0 0 10px "#19FB7";
+}
+
+.main-content {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.main-content h1 {
+    font-size: 3rem;
+    color: "#19FB7";
+    margin-bottom: 30px;
+    text-shadow: 0 4px 8px #050000;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.search-input {
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    width: 400px;
+    background-color: #c4c4c4;
+    color: #050000;
+}
+
+.search-button {
+    padding: 15px 25px;
+    background: linear-gradient(135deg, "#19FB7", #AAABAB);
+    color: grey;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Search Results Page Styles */
+.search-results {
+  background: linear-gradient(180deg, #0a0a0a, #1f1f1f);
+  color: #fff;
+  padding: 40px;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header styling */
+.search-results h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: "#19FB7";
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Movie list */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Individual Movie Item */
+.movie-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 250px;
+  height: 350px;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(19, 251, 119, 0.6);
+}
+
+.movie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.movie-item:hover img {
+  opacity: 0.7;
+}
+
+/* Movie Title and Year */
+.movie-item h3 {
+  font-size: 1.5rem;
+  margin-top: 15px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(19, 251, 119, 0.8), 0 0 10px rgba(19, 251, 119, 0.5);
+  text-transform: capitalize;
+}
+
+.movie-item p {
+  color: #c4c4c4;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Loading and Error states */
+.loading,
+.error {
+  color: "#19FB7";
+  font-size: 1.5rem;
+  animation: pulse 1s infinite;
+  margin-top: 20px;
+}
+
+.error {
+  color: #ff4444;
+}
+
+/* Button for retrying */
+.retry-btn {
+  background-color: "#19FB7";
+  color: #050000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  background-color: #ff4444;
+  color: #fff;
+}
+
+/* Glowing Border Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
