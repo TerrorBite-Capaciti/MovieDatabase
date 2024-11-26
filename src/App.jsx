@@ -5,6 +5,10 @@ import HomeScreen from "./pages/HomeScreen";
 import SearchResults from "./pages/SearchResults";
 import MovieCard from "./MovieCard/MovieCard";
 
+
+const API_KEY = "f4e3711c"; // Replace with your own API key
+const API_URL = "https://www.omdbapi.com/?s=popular&type=movie&apikey=f4e3711c" + API_KEY;
+
 //defined mock data for movies
 const mockMovies = [
   {
