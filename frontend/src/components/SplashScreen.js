@@ -1,15 +1,24 @@
-// SplashScreen.js
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../logo.png'
+import logo from '../logo.png'; // Make sure the logo file is in the correct directory
 
 const SplashScreen = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Play the speech synthesis (Text-to-Speech) sound saying "FlickFinder"
+    const utterance = new SpeechSynthesisUtterance('FlickFinder');
+    utterance.pitch = 1.5; // Adjust the pitch for the desired sound
+    utterance.rate = 1.2;  // Speed of the voice
+    utterance.volume = 1;  // Volume (0.0 to 1.0)
+    
+    // Speak the phrase "FlickFinder"
+    window.speechSynthesis.speak(utterance);
+
+    // Timeout for navigating to the home screen after the splash screen
     const timer = setTimeout(() => {
       navigate('/home');
-    }, 3000); // 3 seconds timeout
+    }, 5000); // 5 seconds timeout
 
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -18,8 +27,8 @@ const SplashScreen = () => {
     <div className="splash-screen">
       <div className="logo">
         <img src={logo} alt="FlickFndr Logo" className="logo-image" />
-        <h1>FlickFndr</h1>
       </div>
+      <div className="particles"></div> {/* Particle container */}
     </div>
   );
 };
@@ -34,33 +43,33 @@ const styles = `
     align-items: center;
     height: 100vh;
     background-color: #050000;
-    animation: fadeIn 5s ease-in-out;
-    text-align: center;
+    position: relative;
+    animation: fadeIn 3s ease-in-out, scaleUp 2s ease-in-out;
+    overflow: hidden;
   }
 
   .logo {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #19FB7;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    animation: textSlideIn 2s ease-in-out;
   }
 
   .logo-image {
-    max-width: 200px;
-    margin-bottom: 20px;
-    animation: glow 1.5s infinite alternate;
+    max-width: 500px; /* Increased logo size */
+    animation: logoBounce 1s infinite, glow 1.5s infinite alternate, float 3s ease-in-out infinite;
   }
 
-  @keyframes fadeIn {
+  /* Glowing text and logo animation */
+  @keyframes float {
     0% {
-      opacity: 0;
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(10px);
     }
     100% {
-      opacity: 1;
+      transform: translateY(-10px);
     }
   }
 
@@ -69,7 +78,51 @@ const styles = `
       box-shadow: 0 0 5px #19FB7, 0 0 10px #19FB7, 0 0 15px #19FB7;
     }
     100% {
-      box-shadow: 0 0 15px #19FB7, 0 0 25px #19FB7, 0 0 30px #19FB7;
+      box-shadow: 0 0 20px #19FB7, 0 0 30px #19FB7, 0 0 50px #19FB7;
+    }
+  }
+
+  @keyframes textSlideIn {
+    0% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.3));
+    animation: particleMove 5s infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes particleMove {
+    0% {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.6));
+    }
+    50% {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.4));
+    }
+    100% {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.6));
     }
   }
 `;

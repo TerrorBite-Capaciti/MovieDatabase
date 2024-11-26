@@ -1,6 +1,54 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../logo.png'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faBookmark, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import logo from '../logo.png';
+import MovieCard from "../MovieCard/MovieCard"; // Import MovieCard component
+
+
+//mock data for movies
+const mockMovies = [
+  {
+    id: 1,
+    title: "Inception",
+    image: "https://image.tmdb.org/t/p/w500/8h58BL2Fg9Rlj5tBXGojJ3LgNkJ.jpg",
+  },
+  {
+    id: 2,
+    title: "The Dark Knight",
+    image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+  },
+  {
+    id: 3,
+    title: "Interstellar",
+    image: "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+  },
+  {
+    id: 4,
+    title: "The Matrix",
+    image: "https://image.tmdb.org/t/p/w500/cp1VbIptTHjc1GR13mdBRujtyk7.jpg",
+  },
+{
+  id: 5,
+  title: "Titanic",
+  image: "https://image.tmdb.org/t/p/w500/kxeMxh9gVNY7NFS3FhH8Gr6Rf6v.jpg",
+},
+{
+  id: 6,
+  title: "The Shawshank Redemption",
+  image: "https://image.tmdb.org/t/p/w500/6Bq8aBCu69jlq6A1LGA90tFuZkE.jpg",
+},
+{
+  id: 7,
+  title: "The Godfather",
+  image: "https://image.tmdb.org/t/p/w500/mCoaqvJlJ3zD2C4J2GZ0CpRzm9v.jpg",
+},
+{
+  id: 8,
+  title: "Pulp Fiction",
+  image: "https://image.tmdb.org/t/p/w500/cKzHfjJvM5VrmgyI3wHJkNjta7e.jpg",
+},
+];
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,8 +61,40 @@ const HomeScreen = () => {
           <img src={logo} alt="FlickFndr Logo" className="logo-image" />
         </div>
         <ul className="nav-links">
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/watchlist">Watchlist</Link></li>
+          <li>
+            <Link to="/home" className="nav-item">
+              <FontAwesomeIcon icon={faHome} className="nav-icon" />
+              <span className="nav-text">HOME</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/watchlist" className="nav-item">
+              <FontAwesomeIcon icon={faBookmark} className="nav-icon" />
+              <span className="nav-text">WATCHLIST</span>
+            </Link>
+          </li>
+          <li className="profile-dropdown">
+            <div className="nav-item">
+              <FontAwesomeIcon icon={faUserCircle} className="nav-icon" />
+              <span className="nav-text">Profile</span>
+            </div>
+            <ul className="dropdown-menu">
+              <li>
+                <Link to="/profile">View Profile</Link>
+              </li>
+              <li>
+                <Link to="/settings">Settings</Link>
+              </li>
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Link to="/home" className="nav-item">
+              <span className="nav-text"></span>
+            </Link>
+          </li>
         </ul>
       </nav>
 
@@ -33,21 +113,23 @@ const HomeScreen = () => {
             Search
           </Link>
         </div>
-
-        {/* Additional Buttons */}
-        <div className="action-buttons">
-          <button className="btn">Recommended Movies</button>
-          <button className="btn">Coming Soon</button>
-        </div>
       </div>
+
+      {/* Movie cards section */}
+      <div>
+        <h2>Available Movies</h2>
+        {/* Render MovieCard component and pass mockMovies as props */}
+        <MovieCard movies={mockMovies} />
+      </div>
+    
     </div>
   );
 };
 
-// HomeScreen Styling (futuristic vibe with your color palette)
+// Styling
 const homeScreenStyles = `
   .home-screen {
-    background: linear-gradient(135deg, #050000, #909292);
+    background: black;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
@@ -55,13 +137,12 @@ const homeScreenStyles = `
     font-family: 'Arial', sans-serif;
   }
 
-  /* Navbar */
+  /* Navbar Styling */
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #19FB7;
-    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.85);
     position: fixed;
     top: 0;
     width: 100%;
@@ -69,27 +150,87 @@ const homeScreenStyles = `
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   }
 
-  .navbar .logo-image {
-    height: 50px;
-    width: auto;
+  .logo-image {
+    height: 60px;
+    width: 70%;
+    filter: drop-shadow(0 0 8px #19FB7);
   }
 
-  .navbar .nav-links {
-    list-style: none;
+  .nav-links {
     display: flex;
     gap: 30px;
+    align-items: center;
+    list-style-type: none; 
   }
 
-  .navbar .nav-links li a {
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
-    color: #050000;
-    font-size: 1.2rem;
-    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .nav-icon {
+    font-size: 1.5rem;
+    color: #19FB7;
+    transition: transform 0.2s, color 0.3s;
+  }
+
+  .nav-text {
     transition: color 0.3s ease;
   }
 
-  .navbar .nav-links li a:hover {
-    color: #AAABAB;
+  .nav-item:hover .nav-icon {
+    color: white;
+    transform: scale(1.2);
+  }
+
+  .nav-item:hover .nav-text {
+  border-bottom: 3px solid #19B7B7;
+  }
+
+  /* Profile Dropdown */
+  .profile-dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+  }
+
+  .profile-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu li {
+    list-style: none;
+    padding: 10px 20px;
+    text-align: left;
+  }
+
+  .dropdown-menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    transition: color 0.3s ease;
+  }
+
+  .dropdown-menu a:hover {
+    color: #19FB7;
+    text-shadow: 0 0 10px #19FB7;
   }
 
   /* Main Content */
@@ -102,16 +243,13 @@ const homeScreenStyles = `
     font-size: 3rem;
     color: #19FB7;
     margin-bottom: 30px;
-    text-shadow: 0 2px 5px #050000;
+    text-shadow: 0 4px 8px #050000;
   }
 
-  /* Search Section */
   .search-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 15px;
-    margin-top: 20px;
   }
 
   .search-input {
@@ -120,55 +258,18 @@ const homeScreenStyles = `
     border: none;
     border-radius: 8px;
     width: 400px;
-    outline: none;
     background-color: #c4c4c4;
     color: #050000;
-    transition: background-color 0.3s ease;
-  }
-
-  .search-input:focus {
-    background-color: #909292;
   }
 
   .search-button {
     padding: 15px 25px;
-    background-color: #19FB7;
-    color: #050000;
+    background: linear-gradient(135deg, #19FB7, #AAABAB);
+    color: grey;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
     font-size: 1.2rem;
-    transition: background-color 0.3s ease, transform 0.2s;
-  }
-
-  .search-button:hover {
-    background-color: #AAABAB;
-    transform: scale(1.05);
-  }
-
-  /* Action Buttons */
-  .action-buttons {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .btn {
-    padding: 15px 30px;
-    background-color: #19FB7;
-    color: #050000;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-  }
-
-  .btn:hover {
-    background-color: #AAABAB;
-    transform: scale(1.05);
   }
 `;
 
