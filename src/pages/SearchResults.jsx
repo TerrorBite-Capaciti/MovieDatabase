@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchMoviesByTitle } from '../utils/fetchMovies'; // Import the function from utils
-import '../styles/App.css'; // Ensure this path is correct
+import '../styles/App.css'; 
 
 const SearchResults = () => {
   const [movies, setMovies] = useState([]);
