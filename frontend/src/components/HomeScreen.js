@@ -116,7 +116,7 @@ const homeScreenStyles = `
   .navbar {
     display: flex;
     justify-content: space-between;
-    align-items:;
+    align-items: center;
     background: rgba(0, 0, 0, 0.85);
     position: fixed;
     top: 0;
