@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBookmark, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import MovieCard from "../MovieCard/MovieCard"; // Import MovieCard component
 
-/mock data for movies
+//mock data for movies
 const mockMovies = [
   {
     id: 1,
@@ -109,6 +109,13 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
+
+      <div>
+        <h2>Available Movies</h2>
+        {/* Render MovieCard component and pass mockMovies as props */}
+        <MovieCard movies={mockMovies} />
+      </div>
+    
     </div>
   );
 };
