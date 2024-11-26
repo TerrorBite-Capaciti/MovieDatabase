@@ -4,34 +4,15 @@ import SplashScreen from "./components/SplashScreen";
 import HomeScreen from "./pages/HomeScreen";
 import SearchResults from "./pages/SearchResults";
 import MovieCard from "./MovieCard/MovieCard";
-
+import Navbar from "./components/Navbar"; // Corrected import
 
 const API_KEY = "f4e3711c";
-const API_URL = "https://www.omdbapi.com/?s=popular&type=movie&" + API_KEY;
+const API_URL = "https://www.omdbapi.com/?s=popular&type=movie&apikey=" + API_KEY;
 
-//defined mock data for movies
-const mockMovies = [
-  {
-    id: 1,
-    title: "Inception",
-    image: "https://image.tmdb.org/t/p/w500/8h58BL2Fg9Rlj5tBXGojJ3LgNkJ.jpg",
-  },
-  {
-    id: 2,
-    title: "The Dark Knight",
-    image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-  },
-  {
-    id: 3,
-    title: "Interstellar",
-    image: "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
-  },
-];
 const App = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    // Fetch data from OMDb API
     const fetchMovies = async () => {
       try {
         const response = await fetch(API_URL); // Perform the fetch request
@@ -51,14 +32,15 @@ const App = () => {
   }, []); // Empty dependency array ensures it runs only once
 
   return (
-    <Routes>
-      <Route path="/" element={<SplashScreen />} />
-      <Route path="/home" element={<HomeScreen />} />
-      <Route path="/search" element={<SearchResults />} />
-
-    {/* Route for Movie Card */}
-        <Route path="/movies" element={<MovieCard movies={movies} />} /> 
-    </Routes>
+    <>
+      <Navbar /> {/* Added Navbar component */}
+      <Routes>
+        <Route path="/" element={<SplashScreen />} />
+        <Route path="/home" element={<HomeScreen />} />
+        <Route path="/search" element={<SearchResults />} />
+        <Route path="/movies" element={<MovieCard movies={movies} />} />
+      </Routes>
+    </>
   );
 };
 
