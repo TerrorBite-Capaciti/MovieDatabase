@@ -3,6 +3,27 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBookmark, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import logo from '../logo.png';
+import MovieCard from "../MovieCard/MovieCard"; // Import MovieCard component
+
+
+//mock data for movies
+const mockMovies = [
+  {
+    id: 1,
+    title: "Inception",
+    image: "https://image.tmdb.org/t/p/w500/8h58BL2Fg9Rlj5tBXGojJ3LgNkJ.jpg",
+  },
+  {
+    id: 2,
+    title: "The Dark Knight",
+    image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+  },
+  {
+    id: 3,
+    title: "Interstellar",
+    image: "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+  },
+];
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -68,6 +89,14 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
+
+      {/* Movie cards section */}
+      <div>
+        <h2>Available Movies</h2>
+        {/* Render MovieCard component and pass mockMovies as props */}
+        <MovieCard movies={mockMovies} />
+      </div>
+    
     </div>
   );
 };
