@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBookmark, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import MovieCard from "../MovieCard/MovieCard"; // Import MovieCard component
+
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
