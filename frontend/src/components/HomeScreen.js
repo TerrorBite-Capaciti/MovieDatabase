@@ -97,7 +97,7 @@ const homeScreenStyles = `
   }
 
   .logo-image {
-    height: 80px;
+    height: 60px;
     width: 70%;
     filter: drop-shadow(0 0 8px #19FB7);
   }
@@ -131,13 +131,12 @@ const homeScreenStyles = `
   }
 
   .nav-item:hover .nav-icon {
-    color: #FFD700;
+    color: white;
     transform: scale(1.2);
   }
 
   .nav-item:hover .nav-text {
-    color: #FFD700;
-    text-shadow: 0 0 8px #FFD700;
+  border-bottom: 3px solid #19B7B7;
   }
 
   /* Profile Dropdown */
