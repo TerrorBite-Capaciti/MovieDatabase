@@ -144,4 +144,4 @@ We value your feedback! Feel free to:
 - Contact the team at MovieDatabase Support.
 
 
-###  Crafted with ❤️ by TerroBite
+###  Crafted with ❤️ by TerrorBite
