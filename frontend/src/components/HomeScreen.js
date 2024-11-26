@@ -23,6 +23,31 @@ const mockMovies = [
     title: "Interstellar",
     image: "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
   },
+  {
+    id: 4,
+    title: "The Matrix",
+    image: "https://image.tmdb.org/t/p/w500/cp1VbIptTHjc1GR13mdBRujtyk7.jpg",
+  },
+{
+  id: 5,
+  title: "Titanic",
+  image: "https://image.tmdb.org/t/p/w500/kxeMxh9gVNY7NFS3FhH8Gr6Rf6v.jpg",
+},
+{
+  id: 6,
+  title: "The Shawshank Redemption",
+  image: "https://image.tmdb.org/t/p/w500/6Bq8aBCu69jlq6A1LGA90tFuZkE.jpg",
+},
+{
+  id: 7,
+  title: "The Godfather",
+  image: "https://image.tmdb.org/t/p/w500/mCoaqvJlJ3zD2C4J2GZ0CpRzm9v.jpg",
+},
+{
+  id: 8,
+  title: "Pulp Fiction",
+  image: "https://image.tmdb.org/t/p/w500/cKzHfjJvM5VrmgyI3wHJkNjta7e.jpg",
+},
 ];
 
 const HomeScreen = () => {
