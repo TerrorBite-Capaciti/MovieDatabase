@@ -6,24 +6,42 @@ import { fetchAll } from '../utils/fetchAll';
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // const [data, setData] = useState(null);
+  // storing all randomised movie data
+  // const [allMovieData, setAllMovieData] = useState(null);
 
-  const [allMovieData, setAllMovieData] = useState(null);
+  const [_, setError] = useState(null)
 
-  const [error, setError] = useState(null)
+  // Fetch popular movies from API
+  // useEffect(() => {
+  //   const fetchPopularMovies = async () => {
+  //     try {
+  //       const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=f4e3711c&language=en-US&page=1');
+  //       const data = await response.json();
+  //       setMovies(data.results); // Assuming the API response has a 'results' array
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching movies:", error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchPopularMovies();
+  // }, []);
 
   useEffect(() => {
     try {
       const results = fetchAll();
 
       if (results && results.Response === "True") {
-        setAllMovieData(JSON.stringify(results.Search) || [])
+        setMovies(JSON.stringify(results.Search) || [])
       } else {
-        setAllMovieData([])
+        setMovies([])
       }
     } catch (error) {
-      setError("Unable to fetch featuredlist: " + error)
+      setError("Unable to fetch featured list: " + error)
     }
   }, [])
 
@@ -45,14 +63,24 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
-
-      <section className="featured-section">
-        <h1>Featured</h1>
-
-        <div className="media-display">
-          <MovieCard movie={setAllMovieData}></MovieCard>
+ {/* Popular Movies Section */}
+ <div className="popular-movies">
+        <h2>Popular Movies</h2>
+        <div className="movie-scroller">
+          {/* Loading state */}
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            movies.length > 0 && (
+              <div className="movie-list">
+                {movies.map((movie) => (
+                  <MovieCard key={movie.id} movie={movie} />
+                ))}
+              </div>
+            )
+          )}
         </div>
-      </section>
+      </div>
 
     </div>
   );
