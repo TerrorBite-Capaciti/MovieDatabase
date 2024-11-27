@@ -170,8 +170,8 @@ html, body {
 }
 
 .navbar .logo-image {
-  height: 80px;
-  width: 70%;
+  height: 50px;
+  width: 80%;
   filter: drop-shadow(0 0 8px "#19FB7");
 }
 
