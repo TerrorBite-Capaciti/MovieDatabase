@@ -32,6 +32,7 @@ const Navbar = () => {
             <span className="nav-text">GENRES</span>
           </Link>
         </li>
+
         <li>
           <Link to="/trending" className="nav-item">
             <FontAwesomeIcon icon={faChartLine} className="nav-icon" />
