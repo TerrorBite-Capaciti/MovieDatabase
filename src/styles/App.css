@@ -163,13 +163,13 @@
 }
 
 .nav-item:hover .nav-icon {
-  color: #FFD700;
+  color: #10ebdc;
   transform: scale(1.2);
 }
 
 .nav-item:hover .nav-text {
-  color: #FFD700;
-  text-shadow: 0 0 8px #FFD700;
+  color: #10ebdc;
+  text-shadow: 0 0 8px #10ebdc;
 }
 
 .profile-dropdown {

@@ -81,7 +81,7 @@
 }
 
 .movie-card-actions .watchlist-btn:hover {
-  background-color: #28a745;
+  background-color: #062f3b;
 }
 
 .movie-card-actions .trailer-btn:hover {
@@ -204,7 +204,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #050000 0%, #19BFB7 100%);
+  background: linear-gradient(90deg, #050000 0%, #204b48 100%);
   padding: 15px 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   position: sticky;
@@ -416,7 +416,7 @@
   
   .watchlist-btn:hover,
   .trailer-btn:hover {
-    background-color: #FFD700;
+    background-color: #093d4d;
   }
   
   .watchlist-btn svg,
