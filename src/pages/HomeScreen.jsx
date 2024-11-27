@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import MovieCard from '../components/MovieCard';
+import { fetchAll } from '../utils/fetchAll';
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
+
+  // const [data, setData] = useState(null);
+
+  const [allMovieData, setAllMovieData] = useState(null);
+
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    try {
+      const results = fetchAll();
+
+      if (results && results.Response === "True") {
+        setAllMovieData(JSON.stringify(results.Search) || [])
+      } else {
+        setAllMovieData([])
+      }
+    } catch (error) {
+      setError("Unable to fetch featuredlist: " + error)
+    }
+  }, [])
 
   return (
     <div className="home-screen">
@@ -22,6 +45,15 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
+
+      <section className="featured-section">
+        <h1>Featured</h1>
+
+        <div className="media-display">
+          <MovieCard movie={setAllMovieData}></MovieCard>
+        </div>
+      </section>
+
     </div>
   );
 };
