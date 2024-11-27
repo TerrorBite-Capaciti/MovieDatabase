@@ -15,3 +15,5 @@ export const fetchMoviesByTitle = async (title, type = "") => {
     return null;
   }
 };
+
+export { API_KEY, BASE_URL }
