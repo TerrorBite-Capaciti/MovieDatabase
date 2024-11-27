@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchMoviesByTitle } from '../utils/fetchMovies'; // Import the function from utils
-import '../styles/App.css'; 
+import '../styles/Search.css'; 
 
 const SearchResults = () => {
   const [movies, setMovies] = useState([]);
@@ -43,11 +43,8 @@ const SearchResults = () => {
 
   return (
     <div className="search-results">
-  
-      
-      {loading && <p>Loading...</p>}
-      
-      {error && <p>{error}</p>}
+      {loading && <p className="loading">Loading...</p>}
+      {error && <p className="error">{error}</p>}
 
       {movies.length > 0 ? (
         <div className="movie-list">

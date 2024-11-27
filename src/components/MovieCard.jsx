@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { FaPlusCircle, FaPlayCircle, FaInfoCircle } from 'react-icons/fa'; // Added FaInfoCircle for more information
-import '../styles/components.css'; // Styling for the footer
+import PropTypes from 'prop-types'; // Import PropTypes
+import { FaPlusCircle, FaPlayCircle, FaInfoCircle } from 'react-icons/fa';
+import '../styles/components.css';
 
 const MovieCard = ({ movie }) => {
-  const [flipped, setFlipped] = useState(false); // Track card flip state
+  const [flipped, setFlipped] = useState(false);
 
   const handleCardClick = (e) => {
-    // Prevent flip on button clicks
     if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
       return;
     }
-    setFlipped(!flipped); // Toggle the flipped state
+    setFlipped(!flipped);
   };
 
   const handleAddToWatchlist = () => {
@@ -73,6 +73,20 @@ const MovieCard = ({ movie }) => {
       </div>
     </div>
   );
+};
+
+// Define PropTypes for validation
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Year: PropTypes.string.isRequired,
+    Type: PropTypes.string.isRequired,
+    Genre: PropTypes.string,
+    imdbRating: PropTypes.string,
+    Plot: PropTypes.string,
+    Poster: PropTypes.string.isRequired,
+    Trailer: PropTypes.string,
+  }).isRequired,
 };
 
 export default MovieCard;
