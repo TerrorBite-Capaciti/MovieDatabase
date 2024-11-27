@@ -20,23 +20,24 @@ async function search(randomName, i) {
         return response.json()
     })
     .then(function(data){
-        console.log(data)
-        var num = data.Search; //to get the length of response, sometimes its less than 10
+        var num = data.Search.length; //to get the length of response, sometimes its less than 10
         for(var j=0; j < num; j++){         
         movie_poster.push(data.Search[j]);
         }
-        return movie_poster;    
+        // return movie_poster;    
     });
     return movie_poster;
 };
 
 //loop through search.
-function fetchAll() {
+async function fetchAll() {
     // var variable_from_html_search = document.querySelector(".search-input").value;
 
     for(var i=0; i < randomListToSearch.length; i++){
-        movie_poster = search(randomListToSearch[i], i);
+        await search(randomListToSearch[i], i);
     }
+
+    return { Response: "True", Search: movie_poster };	
 }
  //movie_poster now has top 100 list and you can use it anywhere, remember to use JSON.stringify()
 
