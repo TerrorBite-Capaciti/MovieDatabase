@@ -22,6 +22,15 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
+
+      <section className="featured-section">
+        <h1>Featured</h1>
+
+        <div className="media-display">
+          <MovieCard movie={setAllMovieData}></MovieCard>
+        </div>
+      </section>
+
     </div>
   );
 };
