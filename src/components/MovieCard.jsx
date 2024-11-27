@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlusCircle, FaPlayCircle } from 'react-icons/fa'; // Import icons for the watchlist and trailer
+import '../styles/components.css'   // styling for footer
 
 const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false); // Track card flip state

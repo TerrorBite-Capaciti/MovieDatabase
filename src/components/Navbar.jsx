@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faBookmark, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHome,
+  faBookmark,
+  faUserCircle,
+  faSearch,
+  faChartLine,
+  faFilm,
+  faQuestionCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const logo = "/assets/logo.png"; // Path to logo in public/assets
@@ -19,6 +27,18 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/genres" className="nav-item">
+            <FontAwesomeIcon icon={faFilm} className="nav-icon" />
+            <span className="nav-text">GENRES</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/trending" className="nav-item">
+            <FontAwesomeIcon icon={faChartLine} className="nav-icon" />
+            <span className="nav-text">TRENDING</span>
+          </Link>
+        </li>
+        <li>
           <Link to="/watchlist" className="nav-item">
             <FontAwesomeIcon icon={faBookmark} className="nav-icon" />
             <span className="nav-text">WATCHLIST</span>
@@ -27,7 +47,7 @@ const Navbar = () => {
         <li className="profile-dropdown">
           <div className="nav-item">
             <FontAwesomeIcon icon={faUserCircle} className="nav-icon" />
-            <span className="nav-text">Profile</span>
+            <span className="nav-text">PROFILE</span>
           </div>
           <ul className="dropdown-menu">
             <li>
@@ -41,6 +61,17 @@ const Navbar = () => {
             </li>
           </ul>
         </li>
+        <li>
+          <Link to="/help" className="nav-item">
+            <FontAwesomeIcon icon={faQuestionCircle} className="nav-icon" />
+            <span className="nav-text">HELP</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="                                " className="nav-item">
+          </Link>
+        </li>
+
       </ul>
     </nav>
   );
