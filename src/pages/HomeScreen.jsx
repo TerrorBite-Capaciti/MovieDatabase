@@ -32,17 +32,22 @@ const HomeScreen = () => {
   // }, []);
 
   useEffect(() => {
-    try {
-      const results = fetchAll();
-
-      if (results && results.Response === "True") {
-        setMovies(JSON.stringify(results.Search) || [])
-      } else {
-        setMovies([])
+    const getRandomMovies = async () => {
+      try {
+        const results = await fetchAll();       
+        
+        if (results.Response === "True") {
+          setMovies(results.Search || [])
+          setLoading(false)
+        } else {
+          setMovies([])
+        }
+      } catch (error) {
+        setError("Unable to fetch featured list: " + error)
+        setLoading(false)
       }
-    } catch (error) {
-      setError("Unable to fetch featured list: " + error)
     }
+    getRandomMovies()
   }, [])
 
   return (
