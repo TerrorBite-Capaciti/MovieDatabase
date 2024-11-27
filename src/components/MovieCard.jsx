@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlusCircle, FaPlayCircle } from 'react-icons/fa'; // Import icons for the watchlist and trailer
-import '../styles/components.css'   // styling for footer
+import '../styles/components.css'; // Styling for the footer
 
 const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false); // Track card flip state
@@ -15,8 +15,12 @@ const MovieCard = ({ movie }) => {
   };
 
   const handleWatchTrailer = () => {
-    // Logic to open movie trailer link, assuming trailer URL is in the 'movie.Trailer' field
-    window.open(movie.Trailer, '_blank');
+    // If the trailer URL is available, open it; otherwise, log an error
+    if (movie.Trailer) {
+      window.open(movie.Trailer, '_blank');
+    } else {
+      console.log("Trailer not available for this movie.");
+    }
   };
 
   return (
