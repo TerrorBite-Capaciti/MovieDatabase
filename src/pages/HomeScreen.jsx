@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import MovieCard from '../MovieCard/MovieCard';   // Import the MovieCard component
 
+import MovieCard from '../components/MovieCard';
 import { fetchAll } from '../utils/fetchAll';
 
 const HomeScreen = () => {
