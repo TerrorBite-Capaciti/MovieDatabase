@@ -10,6 +10,20 @@ const HomeScreen = () => {
 
   const [error, setError] = useState(null)
 
+  useEffect(() => {
+    try {
+      const results = fetchAll();
+
+      if (results && results.Response === "True") {
+        setAllMovieData(JSON.stringify(results.Search) || [])
+      } else {
+        setAllMovieData([])
+      }
+    } catch (error) {
+      setError("Unable to fetch featuredlist: " + error)
+    }
+  }, [])
+
   return (
     <div className="home-screen">
       {/* Main Content */}
