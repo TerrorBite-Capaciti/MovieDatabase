@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import MovieCard from '../components/MovieCard';
+import { fetchAll } from '../utils/fetchAll';
+
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
