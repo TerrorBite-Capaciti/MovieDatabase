@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
 import HomeScreen from "./pages/HomeScreen";
 import SearchResults from "./pages/SearchResults";
-import MovieCard from "./MovieCard/MovieCard";
-import Navbar from "./components/Navbar"; // Corrected import
+import MovieCard from "./components/MovieCard";
+import Navbar from "./components/Navbar"; // Global Footer component
 import Footer from "./components/Footer"; // Global Footer component
 
 const API_KEY = "f4e3711c";

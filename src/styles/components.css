@@ -1,4 +1,103 @@
- /* Footer Styles */
+ /* General card styling */
+.movie-card {
+  width: 300px;
+  height: 450px;
+  perspective: 1000px;
+  margin: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Flip container */
+.movie-card-front,
+.movie-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  transition: transform 0.6s;
+}
+
+/* Front side of the card */
+.movie-card-front img {
+  width: 80%;
+  height: 65%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.movie-card-front h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.movie-card-front p {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Back side of the card */
+.movie-card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+  padding: 20px;
+}
+
+.movie-card-back p {
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.movie-card-actions {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.movie-card-actions .watchlist-btn,
+.movie-card-actions .trailer-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.movie-card-actions .watchlist-btn:hover {
+  background-color: #28a745;
+}
+
+.movie-card-actions .trailer-btn:hover {
+  background-color: #007bff;
+}
+
+/* Flip animation */
+.movie-card.flipped .movie-card-front {
+  transform: rotateY(180deg);
+}
+
+.movie-card.flipped .movie-card-back {
+  transform: rotateY(0deg);
+}
+
+/* Footer Styles */
 .footer {
   background-color: #050000;
   color: #fff;
