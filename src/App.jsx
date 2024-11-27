@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
 import HomeScreen from "./pages/HomeScreen";
+import GenrePage from "./pages/GenrePage"; // Import GenrePage
 import SearchResults from "./pages/SearchResults";
 import MovieCard from "./components/MovieCard";
-import Navbar from "./components/Navbar"; // Global Footer component
+import Navbar from "./components/Navbar"; // Global Navbar component
 import Footer from "./components/Footer"; // Global Footer component
 
 const API_KEY = "f4e3711c";
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/movies" element={<MovieCard movies={movies} />} />
+        <Route path="/genres" element={<GenrePage />} /> {/* Added Genres Route */}
       </Routes>
       <Footer /> {/* Global Footer */}
     </>

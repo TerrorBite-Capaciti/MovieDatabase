@@ -79,6 +79,32 @@ html, body {
   }
 }
 
+.genre-page {
+  padding: 20px;
+}
+
+.genre-section {
+  margin-bottom: 40px;
+}
+
+.movie-scroller {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.movie-scroller-inner {
+  display: flex;
+  gap: 10px;
+}
+
+.movie-scroller .movie-card {
+  flex-shrink: 0;
+  width: 200px; /* Adjust size as needed */
+}
+
+
 /*Error Handling Styling*/
 .error-container {
   display: flex;
