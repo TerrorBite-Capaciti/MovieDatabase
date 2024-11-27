@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
+  // const [data, setData] = useState(null);
+
+  const [allMovieData, setAllMovieData] = useState(null);
+
+  const [error, setError] = useState(null)
+
   return (
     <div className="home-screen">
       {/* Main Content */}
