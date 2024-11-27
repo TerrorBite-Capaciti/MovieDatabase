@@ -5,6 +5,7 @@ import HomeScreen from "./pages/HomeScreen";
 import SearchResults from "./pages/SearchResults";
 import MovieCard from "./MovieCard/MovieCard";
 import Navbar from "./components/Navbar"; // Corrected import
+import Footer from "./components/Footer"; // Global Footer component
 
 const API_KEY = "f4e3711c";
 const API_URL = "https://www.omdbapi.com/?s=popular&type=movie&apikey=" + API_KEY;
@@ -33,13 +34,14 @@ const App = () => {
 
   return (
     <>
-      <Navbar /> {/* Added Navbar component */}
+      <Navbar /> {/* Global Navbar */}
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/movies" element={<MovieCard movies={movies} />} />
       </Routes>
+      <Footer /> {/* Global Footer */}
     </>
   );
 };

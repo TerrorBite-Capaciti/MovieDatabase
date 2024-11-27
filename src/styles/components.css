@@ -1,4 +1,87 @@
- /* Search Bar Styling */
+ /* Footer Styles */
+.footer {
+  background-color: #050000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #FFD700;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 0.8rem;
+  }
+}
+
+/* Add other styles below */
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px 15px;
+  border: 2px solid #909292;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #050000;
+}
+
+.search-bar button {
+  background-color: "#19FB7";
+  color: #050000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+  transform: scale(1.1);
+  background-color: #AAABAB;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #050000;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* Search Bar Styling */
 .search-bar {
     display: flex;
     justify-content: center;
