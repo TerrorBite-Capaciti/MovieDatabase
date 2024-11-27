@@ -1,47 +1,73 @@
 import React, { useState } from 'react';
-import { FaPlusCircle, FaPlayCircle } from 'react-icons/fa'; // Import icons for the watchlist and trailer
+import { FaPlusCircle, FaPlayCircle, FaInfoCircle } from 'react-icons/fa'; // Added FaInfoCircle for more information
 import '../styles/components.css'; // Styling for the footer
 
 const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false); // Track card flip state
 
-  const handleCardClick = () => {
-    setFlipped(!flipped); // Toggle the flipped state when the card is clicked
+  const handleCardClick = (e) => {
+    // Prevent flip on button clicks
+    if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+      return;
+    }
+    setFlipped(!flipped); // Toggle the flipped state
   };
 
   const handleAddToWatchlist = () => {
-    // Logic to add the movie to a watchlist can go here
     console.log(`${movie.Title} added to watchlist!`);
   };
 
   const handleWatchTrailer = () => {
-    // If the trailer URL is available, open it; otherwise, log an error
     if (movie.Trailer) {
       window.open(movie.Trailer, '_blank');
     } else {
-      console.log("Trailer not available for this movie.");
+      alert('Trailer not available for this movie.');
     }
   };
 
+  const handleMoreInfo = () => {
+    alert(`Summary: ${movie.Plot || 'No summary available.'}`);
+  };
+
   return (
-    <div className={`movie-card ${flipped ? 'flipped' : ''}`} onClick={handleCardClick}>
+    <div
+      className={`movie-card ${flipped ? 'flipped' : ''}`}
+      onClick={handleCardClick}
+    >
       {/* Front of the card */}
       <div className="movie-card-front">
         <h2>{movie.Title}</h2>
-        <img src={movie.Poster} alt={movie.Title} />
+        <img src={movie.Poster} alt={movie.Title} className="movie-poster" />
         <p><strong>Year:</strong> {movie.Year}</p>
         <p><strong>Type:</strong> {movie.Type}</p>
       </div>
 
-      {/* Back of the card (flipped side) */}
+      {/* Back of the card */}
       <div className="movie-card-back">
-        <p><strong>Plot:</strong> {movie.Plot}</p>
+        <h2>{movie.Title}</h2>
+        <p><strong>Genres:</strong> {movie.Genre || 'N/A'}</p>
+        <p><strong>Rating:</strong> {movie.imdbRating || 'Unrated'}</p>
+
         <div className="movie-card-actions">
-          <button className="watchlist-btn" onClick={handleAddToWatchlist}>
-            <FaPlusCircle /> Add to Watchlist
+          <button
+            className="more-info-btn"
+            onClick={handleMoreInfo}
+          >
+            <FaInfoCircle /> More Info
           </button>
-          <button className="trailer-btn" onClick={handleWatchTrailer}>
+
+          <button
+            className="trailer-btn"
+            onClick={handleWatchTrailer}
+          >
             <FaPlayCircle /> Watch Trailer
+          </button>
+
+          <button
+            className="watchlist-btn"
+            onClick={handleAddToWatchlist}
+          >
+            <FaPlusCircle /> Add to Watchlist
           </button>
         </div>
       </div>
