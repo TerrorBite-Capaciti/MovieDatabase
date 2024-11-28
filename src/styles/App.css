@@ -123,7 +123,7 @@ html, body {
 
 /* Home Screen Styles */
 .home-screen {
-  background: rgb(136, 25, 25);
+  background: black;
   color: #ffffff;
   min-height: 100vh;
   display: flex;
