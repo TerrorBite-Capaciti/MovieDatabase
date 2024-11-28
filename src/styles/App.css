@@ -10,7 +10,7 @@ html, body {
   background-color: #050000; /* Matches splash and home page background */
   overflow: hidden;
   color: #ffffff; /* Default text color */
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Splash Screen Styles */
@@ -123,7 +123,7 @@ html, body {
 
 /* Home Screen Styles */
 .home-screen {
-  background: black;
+  background: rgb(136, 25, 25);
   color: #ffffff;
   min-height: 100vh;
   display: flex;
@@ -163,8 +163,8 @@ html, body {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.1rem;
-  font-weight: 600;
   transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-item .nav-icon {
@@ -236,6 +236,7 @@ html, body {
   color: "#19FB7";
   margin-bottom: 30px;
   text-shadow: 0 4px 8px #050000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .search-container {
