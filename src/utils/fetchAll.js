@@ -1,4 +1,4 @@
-import { API_KEY, BASE_URL } from '../utils/fetchMovies'
+import { API_KEY, BASE_URL } from './fetchMovies'
 
 var movie_poster = [];
 
@@ -20,8 +20,8 @@ async function search(randomName, i) {
         return response.json()
     })
     .then(function(data){
-        var num = data.Search.length; //to get the length of response, sometimes its less than 10
-        for(var j=0; j < num; j++){         
+        const num = data.Search.length; //to get the length of response, sometimes it's less than 10
+        for(let j=0; j < num; j++){
         movie_poster.push(data.Search[j]);
         }
         // return movie_poster;    
@@ -33,12 +33,12 @@ async function search(randomName, i) {
 async function fetchAll() {
     // var variable_from_html_search = document.querySelector(".search-input").value;
 
-    for(var i=0; i < randomListToSearch.length; i++){
+    for(let i=0; i < randomListToSearch.length; i++){
         await search(randomListToSearch[i], i);
     }
 
     return { Response: "True", Search: movie_poster };	
 }
- //movie_poster now has top 100 list and you can use it anywhere, remember to use JSON.stringify()
+ //movie_poster now has top 100 list, and you can use it anywhere, remember to use JSON.stringify()
 
  export { fetchAll }
