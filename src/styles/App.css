@@ -457,8 +457,9 @@ color: #fff;
 
 .movie-card-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .movie-card-actions button {
