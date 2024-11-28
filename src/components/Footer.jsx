@@ -7,12 +7,9 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p className="footer-text">© {new Date().getFullYear()} FlickFndr. All rights reserved.</p>
-        <div className="footer-links">
-          <Link to="/about" className="footer-link">About</Link>
-          <Link to="/contact" className="footer-link">Help</Link>
-          <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
-          <Link to="/terms" className="footer-link">Terms of Service</Link>
+        <p className="footer-text">© {new Date().getFullYear()} FlickFndr. All rights reserved.</p><br></br>
+        <div className="footer-info">
+          <p>FlickFndr - Search Movies and Tv Shows. This is the best page to search full HD Movies and TV Shows online<br></br>wherever you are. FlickFndr has the largest catalog of movies updated daily.</p>
         </div>
       </div>
     </footer>
