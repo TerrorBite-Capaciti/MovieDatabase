@@ -10,7 +10,7 @@ const Footer = () => {
         <p className="footer-text">© {new Date().getFullYear()} FlickFndr. All rights reserved.</p>
         <div className="footer-links">
           <Link to="/about" className="footer-link">About</Link>
-          <Link to="/contact" className="footer-link">Contact</Link>
+          <Link to="/contact" className="footer-link">Help</Link>
           <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
           <Link to="/terms" className="footer-link">Terms of Service</Link>
         </div>
