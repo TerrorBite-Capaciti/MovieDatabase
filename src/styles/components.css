@@ -1,151 +1,372 @@
-/* General Styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Lora", serif; /* Elegant font for the overall page */
-  background: linear-gradient(180deg, #204b48 0%, #050000 100%); /* Consistent background gradient */
-  color: #ffffff;
-  height: 100%;
-  min-height: 100vh; /* Ensures body takes at least full viewport height */
+
+/* Buttons */
+button {
   display: flex;
-  flex-direction: column; /* Flex to push footer down */
-}
-
-/* Scrollbar Styling */
-body {
-  scrollbar-width: thin;
-  scrollbar-color: #19BFB7 #050000;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #050000;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #19BFB7;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #012927;
-}
-
-/* Trending Page Styling */
-.trending-page {
-  padding-top: calc(55px + 105px + 15px);
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
-  min-height: 100%; /* Ensure the page takes full height */
+  justify-content: center;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #19BFB7;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Section Titles */
-.trending-title {
-  font-size: 2rem;
-  font-family: "Orbitron", sans-serif;
+button:hover {
+  background-color: #050000; /* Dark hover effect */
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Specific button icons */
+.more-info-btn {
+  background-color: #AAABAB;
+}
+
+.trailer-btn {
+  background-color: #050000;
+}
+
+.watchlist-btn {
+  background-color: #19BFB7;
+}
+
+/* Icon Style */
+button svg {
+  margin-right: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .movie-card {
+    width: 200px;
+    height: 300px;
+  }
+
+  .movie-card-front h2, .movie-card-back h2 {
+    font-size: 18px;
+  }
+
+  .movie-card-front p, .movie-card-back p {
+    font-size: 12px;
+  }
+
+  .movie-card-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px 15px;
+  border: 2px solid #909292;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #050000;
+}
+
+.search-bar button {
+  background-color: #19FB70;
+  color: #050000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+  transform: scale(1.1);
+  background-color: #AAABAB;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+  }
+  
+  .search-bar input {
+    width: 300px;
+    padding: 10px 15px;
+    border: 2px solid #909292;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #050000;
+  }
+  
+  .search-bar button {
+    background-color: #19FB70;
+    color: #050000;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s ease-in-out;
+  }
+  
+  .search-bar button:hover {
+    transform: scale(1.1);
+    background-color: #AAABAB;
+  }
+
+  /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #050000 0%, #204b48 100%);
+  padding: 15px 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #19BFB7;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Orbitron", sans-serif; /* Geeky font */
+  font-size: 1.5rem;
+  color: "#ffffff";
   text-transform: uppercase;
   letter-spacing: 3px;
   animation: glow 1.5s infinite alternate;
-  color: #19BFB7;
-  text-align: center;
 }
 
-/* Cards Section */
-.trending-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.logo-image {
+  height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
   gap: 20px;
-  width: 90%;
-  max-width: 1200px;
-  padding: 20px 0;
+  margin: 0;
+  padding: 0;
 }
 
-.card {
+
+
+.nav-item:hover {
+  color: #19BFB7;
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #012927;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: inherit;
+}
+
+/* Dropdown Menu */
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
   background: #050000;
-  border: 1px solid #19BFB7;
+  border: 1px solid #909292;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  z-index: 1000;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+.dropdown-menu li {
+  padding: 10px 20px;
 }
 
-.card img {
-  width: 100%;
-  height: auto;
-}
-
-.card-content {
-  padding: 15px;
+.dropdown-menu li a {
+  text-decoration: none;
   color: #c4c4c4;
-  font-family: "Merriweather", serif; /* Elegant font for cards */
-  font-size: 0.9rem; /* Smaller, more elegant font size */
-  text-align: center;
-  line-height: 1.5;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  transition: color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  color: #19BFB7;
+  background: #1f1f1f;
+}
+
+/* Futuristic Glow Animation */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #011414, 0 0 20px #0d1a19, 0 0 30px #011d1b;
+  }
+  to {
+    text-shadow: 0 0 20px "#ffffff", 0 0 30px #031312, 0 0 40px #022927;
+  }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .trending-page {
-    padding-top: calc(15px + 40px);
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .trending-title {
+  .dropdown-menu {
+    width: 100%;
+  }
+}
+
+
+  /* Movie Card Styles */
+/*.movie-card {*/
+/*    width: 250px;*/
+/*    height: 400px;*/
+/*    perspective: 1000px;*/
+/*    margin: 20px;*/
+/*    cursor: pointer;*/
+/*    display: inline-block;*/
+/*  }*/
+  
+  .movie-card .movie-card-front,
+  .movie-card .movie-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+  }
+  
+  .movie-card .movie-card-front {
+    background: #050000;
+    color: "#fff";
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .movie-card .movie-card-back {
+    background: #1f1f1f;
+    color: "#fff";
+    padding: 20px;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+    text-align: center;
+  }
+  
+  .movie-card.flipped .movie-card-front {
+    transform: rotateY(180deg);
+  }
+  
+  .movie-card.flipped .movie-card-back {
+    transform: rotateY(0);
+  }
+  
+  .movie-card img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .movie-card-actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .watchlist-btn,
+  .trailer-btn {
+    background-color: #19FB70;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .watchlist-btn:hover,
+  .trailer-btn:hover {
+    background-color: #093d4d;
+  }
+  
+  .watchlist-btn svg,
+  .trailer-btn svg {
     font-size: 1.5rem;
   }
-
-  .trending-cards {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  
+  .movie-card h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
   }
-}
-
-/* Glow Animation (for titles) */
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px #19BFB7, 0 0 10px #19BFB7, 0 0 20px #19BFB7;
+  
+  .movie-card p {
+    font-size: 1rem;
+    margin: 5px 0;
   }
-  to {
-    text-shadow: 0 0 10px #19BFB7, 0 0 20px #19BFB7, 0 0 40px #19BFB7;
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .search-bar input {
+      width: 80%;
+    }
+  
+    .movie-card {
+      width: 90%;
+    }
   }
-}
-
-/* Global Footer Styling */
-footer {
-  width: 100%;
-  background-color: #050000;
-  color: #c4c4c4;
-  padding: 10px 0;
-  text-align: center;
-  font-family: "Merriweather", serif;
-  font-size: 0.9rem;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for effect */
-}
-
-/* Ensure the page content doesn't overlap with the footer */
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  margin-top: auto; /* Push the footer to the bottom */
-}
-
-/* Adjust footer for smaller screens */
-@media (max-width: 768px) {
-  footer {
-    font-size: 0.8rem;
-  }
-}
+  
+  
