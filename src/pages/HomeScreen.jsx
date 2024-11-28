@@ -119,12 +119,7 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      {/* Watchlist Section */}
-      <div className="watchlist-section">
-        <h2>Your Watchlist</h2>
-        <p>This is a placeholder for your watchlist functionality.</p>
-      </div>
-
+      
       {/* Scroll-to-Top Button */}
       {/* Add the ScrollToTopButton here */}
     </div>
