@@ -63,10 +63,6 @@ const Navbar = () => {
           </ul>
         </li>
         <li>
-          <Link to="/help" className="nav-item">
-            <FontAwesomeIcon icon={faQuestionCircle} className="nav-icon" />
-            <span className="nav-text">HELP</span>
-          </Link>
         </li>
         <li>
           <Link to="                                " className="nav-item">
