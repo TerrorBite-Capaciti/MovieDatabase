@@ -53,7 +53,7 @@ const HomeScreen = () => {
     <div className="home-screen">
       {/* Main Content */}
       <div className="hero-section">
-        <h1 className="hero-title">Discover Movies and TV Shows</h1>
+        <h1 className="hero-title">Discover Movies and TV Shows</h1><br/>
         <div className="search-container">
           <input
             type="text"
