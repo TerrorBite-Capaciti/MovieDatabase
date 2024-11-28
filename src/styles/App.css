@@ -266,6 +266,10 @@ html, body {
   font-size: 1.2rem;
 }
 
+.search-button:hover{
+  background-color: #3aa898;
+}
+
 
 /* Loading and Error states */
 .loading,
