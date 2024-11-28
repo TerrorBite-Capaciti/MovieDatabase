@@ -3,7 +3,7 @@ const BASE_URL = "https://www.omdbapi.com/";
 
 export const fetchMoviesByTitle = async (title, type = "") => {
   try {
-    const url = `${BASE_URL}?s=${title.replace(/ /g, "+")}&type=${type}&apikey=${API_KEY}`; // Use "s" for search
+    const url = `${BASE_URL}?s=${title.replace(/ /g, "+")}&type=${type}&apikey=${API_KEY}`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Failed to fetch data from OMDb API.");
