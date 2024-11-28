@@ -65,7 +65,7 @@ button svg {
 /* Footer Styles */
 .footer {
   background: linear-gradient(135deg, #050000, #1a1a1a);
-  color: #fff;
+  color: "#fff";
   text-align: center;
   padding: 20px 40px;
   position: fixed;
@@ -88,7 +88,7 @@ button svg {
 }
 
 .footer p span {
-  color: "#19FB7";
+  color: #19FB70;
   font-weight: bold;
 }
 
@@ -133,7 +133,7 @@ button svg {
 
 .footer .social-icons i {
   font-size: 2rem;
-  color: #fff;
+  color: "#fff";
   transition: transform 0.3s, color 0.3s;
 }
 
@@ -201,7 +201,7 @@ button svg {
 }
 
 .search-bar button {
-  background-color: "#19FB7";
+  background-color: #19FB70;
   color: #050000;
   padding: 10px 15px;
   border: none;
@@ -236,7 +236,7 @@ button svg {
   }
   
   .search-bar button {
-    background-color: "#19FB7";
+    background-color: #19FB70;
     color: #050000;
     padding: 10px 15px;
     border: none;
@@ -272,7 +272,7 @@ button svg {
   gap: 10px;
   font-family: "Orbitron", sans-serif; /* Geeky font */
   font-size: 1.5rem;
-  color: #ffffff;
+  color: "#ffffff";
   text-transform: uppercase;
   letter-spacing: 3px;
   animation: glow 1.5s infinite alternate;
@@ -366,7 +366,7 @@ button svg {
     text-shadow: 0 0 10px #011414, 0 0 20px #0d1a19, 0 0 30px #011d1b;
   }
   to {
-    text-shadow: 0 0 20px #ffffff, 0 0 30px #031312, 0 0 40px #022927;
+    text-shadow: 0 0 20px "#ffffff", 0 0 30px #031312, 0 0 40px #022927;
   }
 }
 
@@ -384,14 +384,14 @@ button svg {
 
 
   /* Movie Card Styles */
-.movie-card {
-    width: 250px;
-    height: 400px;
-    perspective: 1000px;
-    margin: 20px;
-    cursor: pointer;
-    display: inline-block;
-  }
+/*.movie-card {*/
+/*    width: 250px;*/
+/*    height: 400px;*/
+/*    perspective: 1000px;*/
+/*    margin: 20px;*/
+/*    cursor: pointer;*/
+/*    display: inline-block;*/
+/*  }*/
   
   .movie-card .movie-card-front,
   .movie-card .movie-card-back {
@@ -408,14 +408,14 @@ button svg {
   
   .movie-card .movie-card-front {
     background: #050000;
-    color: #fff;
+    color: "#fff";
     padding: 10px;
     border-radius: 10px;
   }
   
   .movie-card .movie-card-back {
     background: #1f1f1f;
-    color: #fff;
+    color: "#fff";
     padding: 20px;
     border-radius: 10px;
     transform: rotateY(180deg);
@@ -443,7 +443,7 @@ button svg {
   
   .watchlist-btn,
   .trailer-btn {
-    background-color: "#19FB7";
+    background-color: #19FB70;
     border: none;
     color: white;
     font-size: 1rem;

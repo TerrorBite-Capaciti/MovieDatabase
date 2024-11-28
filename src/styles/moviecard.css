@@ -23,14 +23,14 @@
   
   .movie-card .movie-card-front {
     background: #050000;
-    color: #fff;
+    color: "#fff";
     padding: 10px;
     border-radius: 10px;
   }
   
   .movie-card .movie-card-back {
     background: #1f1f1f;
-    color: #fff;
+    color: "#fff";
     padding: 20px;
     border-radius: 10px;
     transform: rotateY(180deg);
@@ -58,7 +58,7 @@
   
   .watchlist-btn,
   .trailer-btn {
-    background-color: "#19FB7";
+    background-color: #19FB70;
     border: none;
     color: white;
     font-size: 1rem;
