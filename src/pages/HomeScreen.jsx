@@ -1,60 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import '../styles/HomeScreen.css'; 
 import MovieCard from '../components/MovieCard';
-import { fetchAll } from '../utils/fetchAll';
+import { fetchAll, fetchTrending, fetchComingSoon, fetchCategories } from '../utils/fetchAll'; // Fetch functions from utils
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [comingSoonMovies, setComingSoonMovies] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  // storing all randomised movie data
-  // const [allMovieData, setAllMovieData] = useState(null);
-
-  const [_, setError] = useState(null)
-
-  // Fetch popular movies from API
-  // useEffect(() => {
-  //   const fetchPopularMovies = async () => {
-  //     try {
-  //       const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=f4e3711c&language=en-US&page=1');
-  //       const data = await response.json();
-  //       setMovies(data.results); // Assuming the API response has a 'results' array
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching movies:", error);
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchPopularMovies();
-  // }, []);
-
+  // Fetch Movies, Trending, and Categories data
   useEffect(() => {
-    const getRandomMovies = async () => {
+    const getMoviesData = async () => {
       try {
-        const results = await fetchAll();       
-        
+        // Fetch Random Featured Movies
+        const results = await fetchAll();
         if (results.Response === "True") {
-          setMovies(results.Search || [])
-          setLoading(false)
-        } else {
-          setMovies([])
+          setMovies(results.Search || []);
         }
+
+        // Fetch Trending Movies
+        const trendingResults = await fetchTrending();
+        if (trendingResults.Response === "True") {
+          setTrendingMovies(trendingResults.Search || []);
+        }
+
+        // Fetch Coming Soon Movies
+        const comingSoonResults = await fetchComingSoon();
+        if (comingSoonResults.Response === "True") {
+          setComingSoonMovies(comingSoonResults.Search || []);
+        }
+
+        // Fetch Movie Categories (Genres)
+        const categoryResults = await fetchCategories();
+        if (categoryResults.Response === "True") {
+          setCategories(categoryResults.Genres || []);
+        }
+
+        setLoading(false);
       } catch (error) {
-        setError("Unable to fetch featured list: " + error)
-        setLoading(false)
+        console.error("Error fetching data:", error);
+        setLoading(false);
       }
-    }
-    getRandomMovies()
-  }, [])
+    };
+    getMoviesData();
+  }, []);
 
   return (
     <div className="home-screen">
       {/* Main Content */}
-      <div className="main-content">
-        <h1>Discover Movies and TV Shows</h1>
+      <div className="hero-section">
+        <h1 className="hero-title">Discover Movies and TV Shows</h1>
         <div className="search-container">
           <input
             type="text"
@@ -68,25 +67,75 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
- {/* Popular Movies Section */}
- <div className="popular-movies">
-        <h2>Popular Movies</h2>
+
+      {/* Featured Movies Section */}
+      <div className="featured-movies">
+        <h2>Featured Movies</h2>
         <div className="movie-scroller">
-          {/* Loading state */}
           {loading ? (
             <p>Loading...</p>
           ) : (
-            movies.length > 0 && (
-              <div className="movie-list">
-                {movies.map((movie) => (
-                  <MovieCard key={movie.id} movie={movie} />
-                ))}
-              </div>
-            )
+            <div className="movie-list">
+              {movies.map((movie) => (
+                <MovieCard key={movie.imdbID} movie={movie} />
+              ))}
+            </div>
           )}
         </div>
       </div>
 
+      {/* Categories Section */}
+      <div className="categories-section">
+        <h2>Movie Categories</h2>
+        <div className="category-list">
+          {categories.map((category) => (
+            <Link key={category} to={`/category/${category}`} className="category-item">
+              {category}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Coming Soon Section */}
+      <div className="coming-soon">
+        <h2>Coming Soon</h2>
+        <div className="movie-scroller">
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <div className="movie-list">
+              {comingSoonMovies.map((movie) => (
+                <MovieCard key={movie.imdbID} movie={movie} />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Trending Movies Section */}
+      <div className="trending-movies">
+        <h2>Trending Movies</h2>
+        <div className="movie-scroller">
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <div className="movie-list">
+              {trendingMovies.map((movie) => (
+                <MovieCard key={movie.imdbID} movie={movie} />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Watchlist Section */}
+      <div className="watchlist-section">
+        <h2>Your Watchlist</h2>
+        <p>This is a placeholder for your watchlist functionality.</p>
+      </div>
+
+      {/* Scroll-to-Top Button */}
+      {/* Add the ScrollToTopButton here */}
     </div>
   );
 };

@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 import { FaPlusCircle, FaPlayCircle, FaInfoCircle } from 'react-icons/fa';
-import '../styles/components.css';
+import '../styles/moviecard.css';
 
 const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false);
 
   const handleCardClick = (e) => {
+    if (!e || !e.target) return; // Ensure 'e' and 'e.target' are valid
     if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-      return;
+      return; // Ignore clicks on buttons
     }
-    setFlipped(!flipped);
+    setFlipped((prevState) => !prevState); // Toggle the flip state
   };
 
   const handleAddToWatchlist = () => {
@@ -32,12 +33,16 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       className={`movie-card ${flipped ? 'flipped' : ''}`}
-      onClick={handleCardClick}
+      onClick={handleCardClick} // Pass handleCardClick correctly
     >
       {/* Front of the card */}
       <div className="movie-card-front">
         <h2>{movie.Title}</h2>
-        <img src={movie.Poster} alt={movie.Title} className="movie-poster" />
+        <img
+          src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/250x400'}
+          alt={movie.Title}
+          className="movie-poster"
+        />
         <p><strong>Year:</strong> {movie.Year}</p>
         <p><strong>Type:</strong> {movie.Type}</p>
       </div>
@@ -51,21 +56,30 @@ const MovieCard = ({ movie }) => {
         <div className="movie-card-actions">
           <button
             className="more-info-btn"
-            onClick={handleMoreInfo}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleMoreInfo();
+            }}
           >
             <FaInfoCircle /> More Info
           </button>
 
           <button
             className="trailer-btn"
-            onClick={handleWatchTrailer}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleWatchTrailer();
+            }}
           >
             <FaPlayCircle /> Watch Trailer
           </button>
 
           <button
             className="watchlist-btn"
-            onClick={handleAddToWatchlist}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleAddToWatchlist();
+            }}
           >
             <FaPlusCircle /> Add to Watchlist
           </button>
@@ -75,7 +89,6 @@ const MovieCard = ({ movie }) => {
   );
 };
 
-// Define PropTypes for validation
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
