@@ -258,12 +258,16 @@ html, body {
 
 .search-button {
   padding: 15px 25px;
-  background: linear-gradient(135deg, "#19FB7", #AAABAB);
-  color: grey;
+  background: #308080;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+.search-button:hover{
+  background-color: #3aa898;
 }
 
 

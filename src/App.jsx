@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
 import HomeScreen from "./pages/HomeScreen";
-import GenrePage from "./pages/GenrePage"; // Import GenrePage
+import GenrePage from "./pages/GenrePage"; 
+import TrendingPage from "./pages/TrendingPage";
 import SearchResults from "./pages/SearchResults";
 import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar"; // Global Navbar component
@@ -13,6 +14,8 @@ const API_URL = "https://www.omdbapi.com/?s=popular&type=movie&apikey=" + API_KE
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true); // To track loading state
+  const [error, setError] = useState(null); // To track errors
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -23,15 +26,20 @@ const App = () => {
         if (data.Response === "True") {
           setMovies(data.Search); // Update state with fetched movies
         } else {
-          console.error("Error fetching movies:", data.Error);
+          setError(data.Error); // Handle API error response
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setError("Error fetching data."); // Handle other errors
+      } finally {
+        setLoading(false); // Finished loading
       }
     };
 
     fetchMovies(); // Call the function to fetch movies
   }, []); // Empty dependency array ensures it runs only once
+
+  if (loading) return <div>Loading...</div>; // Show loading text
+  if (error) return <div>{error}</div>; // Show error message
 
   return (
     <>
@@ -39,9 +47,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/home" element={<HomeScreen />} />
-        <Route path="/search" element={<SearchResults />} />
-        <Route path="/movies" element={<MovieCard movies={movies} />} />
-        <Route path="/genres" element={<GenrePage />} /> {/* Added Genres Route */}
+        <Route path="/search" element={<SearchResults movies={movies} />} /> {/* Pass movies to SearchResults */}
+        <Route path="/movies" element={<MovieCard movies={movies} />} /> {/* Pass movies to MovieCard */}
+        <Route path="/genres" element={<GenrePage movies={movies} />} /> {/* Pass movies to GenrePage */}
+        <Route path="/trending" element={<TrendingPage movies={movies} />} /> {/* Pass movies to TrendingPage */}
       </Routes>
       <Footer /> {/* Global Footer */}
     </>

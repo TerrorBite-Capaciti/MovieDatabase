@@ -53,7 +53,7 @@ const HomeScreen = () => {
     <div className="home-screen">
       {/* Main Content */}
       <div className="hero-section">
-        <h1 className="hero-title">Discover Movies and TV Shows</h1>
+        <h1 className="hero-title">Discover Movies and TV Shows</h1><br/>
         <div className="search-container">
           <input
             type="text"
@@ -67,6 +67,7 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
+            
 
       {/* Featured Movies Section */}
       <div className="featured-movies">
@@ -84,17 +85,7 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      {/* Categories Section */}
-      <div className="categories-section">
-        <h2>Movie Categories</h2>
-        <div className="category-list">
-          {categories.map((category) => (
-            <Link key={category} to={`/category/${category}`} className="category-item">
-              {category}
-            </Link>
-          ))}
-        </div>
-      </div>
+
 
       {/* Coming Soon Section */}
       <div className="coming-soon">
