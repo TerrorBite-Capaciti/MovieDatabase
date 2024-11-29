@@ -6,7 +6,7 @@ const Slideshow = () => {
     const movies = [
       "/assets/movie1.png",
       "/assets/movie2.png",
-  
+      "/assets/movie3.png",
     ];
   
     const [currentSlide, setCurrentSlide] = useState(0);
