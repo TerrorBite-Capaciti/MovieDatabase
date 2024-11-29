@@ -28,16 +28,7 @@
     left: 0; /* Bring into view */
     opacity: 1;
   }
-  
-  .slideshow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 400px; /* Adjust the height of the slideshow */
-    z-index: -1; /* Make sure it stays behind the search bar */
-    overflow: hidden;
-  }
+
   
   .slideshow img {
     width: 100%;
