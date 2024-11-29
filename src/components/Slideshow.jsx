@@ -3,13 +3,13 @@ import "../styles/Slideshow.css";
 
 const Slideshow = () => {
   const movies = [
+    "/assets/blood.jpg",
+    "/assets/thecleaning.jpg",
     "/assets/sq.jpg",
     "/assets/luci.jpg",
     "/assets/wicked.jpeg",
     "/assets/movie4.png",
     "/assets/the lion.jpg",
-    "/assets/blood.jpg",
-    "/assets/movie7.png",
     "/assets/movie8.png",
   ];
 
