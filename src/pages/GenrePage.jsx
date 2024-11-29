@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import MovieCard from "../components/MovieCard"; // Assuming you have a MovieCard component
 
 const GenrePage = () => {
@@ -34,8 +34,7 @@ const GenrePage = () => {
 
       // Fetch movies for each genre and store in state
       for (const genre of genres) {
-        const movies = await fetchMoviesByGenre(genre);
-        moviesGrouped[genre] = movies;
+        moviesGrouped[genre] = await fetchMoviesByGenre(genre);
       }
 
       setMoviesByGenre(moviesGrouped);
