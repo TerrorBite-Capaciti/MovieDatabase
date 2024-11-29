@@ -37,15 +37,4 @@ export const fetchComingSoon = async () => {
   }
 };
 
-// Movie categories
-export const fetchCategories = async () => {
-  try {
-    return {
-      Response: "True",
-      Genres: ["Action", "Comedy", "Drama", "Sci-Fi", "Romance", "Horror"] // Example categories
-    };
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-    return { Response: "False", Genres: [] };
-  }
-};
+
