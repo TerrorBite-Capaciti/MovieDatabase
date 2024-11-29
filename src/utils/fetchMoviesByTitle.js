@@ -8,8 +8,7 @@ export const fetchMoviesByTitle = async (title, type = "") => {
     if (!response.ok) {
       throw new Error("Failed to fetch data from OMDb API.");
     }
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching movies:", error);
     return null;
