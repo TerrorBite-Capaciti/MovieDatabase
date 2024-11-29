@@ -9,6 +9,7 @@ const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false);
   const [showModal, setShowModal] = useState(false); // Manage modal visibility
   const [movieDetails, setMovieDetails] = useState(null);
+  const [trailerURL, setTrailerURL] = useState(''); // To store the trailer URL
 
   const handleCardClick = (e) => {
     if (!e || !e.target) return;
@@ -31,16 +32,21 @@ const MovieCard = ({ movie }) => {
   const handleWatchTrailer = async () => {
     console.log("Trailer URL:", movie.Trailer); // Log the trailer URL for debugging
 
+    // Check if the movie has a direct trailer URL
     if (movie.Trailer) {
-      // If trailer URL exists in the movie object, open it
-      window.open(movie.Trailer, '_blank');
+      window.open(movie.Trailer, '_blank'); // If trailer exists, open it
     } else {
-      // If there's no trailer URL, fetch it from OMDb
+      // If no trailer URL, fetch from OMDb API using IMDb ID
       const details = await fetchMoviesByTitle(movie.Title);
       if (details && details.Trailer) {
-        // Log the fetched trailer URL to verify
-        console.log("Fetched Trailer URL:", details.Trailer);
-        window.open(details.Trailer, '_blank');
+        console.log("Fetched Trailer URL:", details.Trailer); // Log the fetched trailer URL
+        setTrailerURL(details.Trailer); // Set the trailer URL state
+        window.open(details.Trailer, '_blank'); // Open trailer
+      } else if (details && details.imdbID) {
+        // If trailer isn't available, build a YouTube search URL based on IMDb ID
+        const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${movie.Title}+trailer`;
+        console.log("Searching YouTube for trailer:", youtubeSearchUrl);
+        window.open(youtubeSearchUrl, '_blank'); // Open YouTube search results
       } else {
         alert('Trailer not available for this movie.');
       }
@@ -127,7 +133,8 @@ MovieCard.propTypes = {
     imdbRating: PropTypes.string,
     Plot: PropTypes.string,
     Poster: PropTypes.string.isRequired,
-    Trailer: PropTypes.string,
+    Trailer: PropTypes.string, // This will hold the trailer URL
+    imdbID: PropTypes.string.isRequired, // This is used to construct the trailer URL
   }).isRequired,
 };
 
