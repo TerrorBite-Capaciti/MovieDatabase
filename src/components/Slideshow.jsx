@@ -8,7 +8,7 @@ const Slideshow = () => {
     "/assets/wicked.jpeg",
     "/assets/movie4.png",
     "/assets/the lion.jpg",
-    "/assets/break.jpg",
+    "/assets/blood.jpg",
     "/assets/movie7.png",
     "/assets/movie8.png",
   ];
