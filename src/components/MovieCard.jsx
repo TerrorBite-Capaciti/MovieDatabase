@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaPlusCircle, FaPlayCircle, FaInfoCircle } from 'react-icons/fa';
+import { fetchMoviesByTitle } from '../api/omdb';  // Importing your API function
 import '../styles/moviecard.css';
 
 const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false);
+  const [movieDetails, setMovieDetails] = useState(null);
 
   const handleCardClick = (e) => {
     if (!e || !e.target) return; // Ensure 'e' and 'e.target' are valid
@@ -14,20 +16,32 @@ const MovieCard = ({ movie }) => {
     setFlipped((prevState) => !prevState); // Toggle the flip state
   };
 
-  const handleAddToWatchlist = () => {
-    console.log(`${movie.Title} added to watchlist!`);
-  };
-
-  const handleWatchTrailer = () => {
-    if (movie.Trailer) {
-      window.open(movie.Trailer, '_blank');
+  const handleMoreInfo = async () => {
+    // Fetch additional movie details from the API
+    const details = await fetchMoviesByTitle(movie.Title);
+    if (details && details.Plot) {
+      alert(`Movie Summary: ${details.Plot || 'No summary available.'}`);
     } else {
-      alert('Trailer not available for this movie.');
+      alert('Failed to fetch movie details.');
     }
   };
 
-  const handleMoreInfo = () => {
-    alert(`Summary: ${movie.Plot || 'No summary available.'}`);
+  const handleWatchTrailer = async () => {
+    // If no trailer URL is present in the movie object, fetch from OMDb API
+    if (movie.Trailer) {
+      window.open(movie.Trailer, '_blank');
+    } else {
+      const details = await fetchMoviesByTitle(movie.Title);
+      if (details && details.Trailer) {
+        window.open(details.Trailer, '_blank');
+      } else {
+        alert('Trailer not available for this movie.');
+      }
+    }
+  };
+
+  const handleAddToWatchlist = () => {
+    alert(`${movie.Title} added to watchlist!`); // Placeholder functionality for adding to watchlist
   };
 
   return (
@@ -57,7 +71,7 @@ const MovieCard = ({ movie }) => {
           <button
             className="more-info-btn"
             onClick={(e) => {
-              e.stopPropagation();
+              e.stopPropagation(); // Prevent triggering card flip
               handleMoreInfo();
             }}
           >
@@ -67,7 +81,7 @@ const MovieCard = ({ movie }) => {
           <button
             className="trailer-btn"
             onClick={(e) => {
-              e.stopPropagation();
+              e.stopPropagation(); // Prevent triggering card flip
               handleWatchTrailer();
             }}
           >
@@ -77,7 +91,7 @@ const MovieCard = ({ movie }) => {
           <button
             className="watchlist-btn"
             onClick={(e) => {
-              e.stopPropagation();
+              e.stopPropagation(); // Prevent triggering card flip
               handleAddToWatchlist();
             }}
           >
