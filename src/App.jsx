@@ -9,6 +9,7 @@ import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar"; // Global Navbar component
 import Footer from "./components/Footer"; // Global Footer component
 import Slideshow from "./components/Slideshow";
+import Watchlist from "./pages/Watchlist";
 
 
 
@@ -19,6 +20,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true); // To track loading state
   const [error, setError] = useState(null); // To track errors
+  const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -41,6 +43,16 @@ const App = () => {
     fetchMovies(); // Call the function to fetch movies
   }, []); // Empty dependency array ensures it runs only once
 
+  const addToWatchlist = (movie) => {
+    setWatchlist((prevWatchlist) => {
+      // Avoid duplicate entries
+      if (!prevWatchlist.find((item) => item.imdbID === movie.imdbID)) {
+        return [...prevWatchlist, movie];
+      }
+      return prevWatchlist;
+    });
+  };
+
   if (loading) return <div>Loading...</div>; // Show loading text
   if (error) return <div>{error}</div>; // Show error message
 
@@ -61,6 +73,8 @@ const App = () => {
         />
         <Route path="/genres" element={<GenrePage movies={movies} />} /> {/* Pass movies to GenrePage */}
         <Route path="/trending" element={<TrendingPage movies={movies} />} /> {/* Pass movies to TrendingPage */}
+        <Route path="/watchlist"
+        element={<Watchlist watchlist={watchlist} />} /> {/* Pass watchlist to Watchlist page */}
       </Routes>
       <Footer /> {/* Global Footer */}
     </>
