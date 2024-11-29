@@ -19,6 +19,9 @@ body {
   scrollbar-color: #19BFB7 #050000;
 }
 
+.hero-title{
+  font-size: 45px;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }
