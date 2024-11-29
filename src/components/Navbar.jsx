@@ -67,7 +67,7 @@ const Navbar = () => {
         <li>
         </li>
         <li>
-          <Link to="                                " className="nav-item">
+          <Link to="" className="nav-item">
           </Link>
         </li>
 

@@ -47,11 +47,7 @@ The Movie Database is an interactive web application built using React and power
   - React Router for seamless navigation.
   - CSS Modules for structured and maintainable styles.
   
-- **Backend:**
-  - Node.js and Express.js for server-side logic.
-  - JWT Authentication for secure login and signup.
-  - Database: MongoDB or PostgreSQL to store user and movie data.
-  - External APIs: Integration with services like TMDB for fetching movie/TV show data.
+
 
 - **Project Tools:**
   - Version Control: Git and GitHub for collaboration.
