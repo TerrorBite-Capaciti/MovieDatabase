@@ -11,6 +11,8 @@ import {
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const Navbar = () => {
   const logo = "/assets/logo.png"; // Path to logo in public/assets
 
@@ -65,7 +67,7 @@ const Navbar = () => {
         <li>
         </li>
         <li>
-          <Link to="                                " className="nav-item">
+          <Link to="" className="nav-item">
           </Link>
         </li>
 

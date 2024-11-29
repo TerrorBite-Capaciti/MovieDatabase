@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
 import HomeScreen from "./pages/HomeScreen";
-import GenrePage from "./pages/GenrePage"; 
+import GenrePage from "./pages/GenrePage";
 import TrendingPage from "./pages/TrendingPage";
 import SearchResults from "./pages/SearchResults";
 import MovieCard from "./components/MovieCard";
@@ -48,7 +48,14 @@ const App = () => {
         <Route path="/" element={<SplashScreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/search" element={<SearchResults movies={movies} />} /> {/* Pass movies to SearchResults */}
-        <Route path="/movies" element={<MovieCard movies={movies} />} /> {/* Pass movies to MovieCard */}
+        <Route 
+          path="/movies" 
+          element={
+            <div className="movie-container">
+              <MovieCard movies={movies} />
+            </div>
+          } 
+        />
         <Route path="/genres" element={<GenrePage movies={movies} />} /> {/* Pass movies to GenrePage */}
         <Route path="/trending" element={<TrendingPage movies={movies} />} /> {/* Pass movies to TrendingPage */}
       </Routes>

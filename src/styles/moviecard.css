@@ -1,104 +1,138 @@
- /* Movie Card Styles */
- .movie-card {
-    width: 250px;
-    height: 400px;
-    perspective: 1000px;
-    margin: 20px;
-    cursor: pointer;
-    display: inline-block;
+/* Movie Card Styles */
+.movie-card {
+  width: 250px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 20px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #AAABAB, #050000); /* Elegant gradient */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Smooth scale-up effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Glow effect on hover */
+}
+
+/* Front & Back of the Movie Card */
+.movie-card .movie-card-front,
+.movie-card .movie-card-back {
+  width: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spacing for title, description, and image */
+  align-items: center;
+  padding: 15px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.movie-card .movie-card-front {
+  background: #050000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-card .movie-card-back {
+  background: rgba(0, 0, 0, 0.85); /* Slightly lighter black */
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.movie-card.flipped .movie-card-front {
+  transform: rotateY(180deg);
+}
+
+.movie-card.flipped .movie-card-back {
+  transform: rotateY(0);
+}
+
+.movie-card img {
+  max-width: 100%;
+  border-radius: 10px; /* Softer corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow on image */
+  transition: transform 0.3s ease;
+}
+
+.movie-card img:hover {
+  transform: scale(1.1); /* Image zoom effect on hover */
+}
+
+/* Movie Card Actions */
+.movie-card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.watchlist-btn,
+.trailer-btn {
+  background-color: #19FB70; /* Vibrant green for action */
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.watchlist-btn:hover,
+.trailer-btn:hover {
+  background-color: #10a84f; /* Subtle darker green */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+.watchlist-btn:active,
+.trailer-btn:active {
+  background-color: #093d4d; /* Deeper color when clicked */
+}
+
+.watchlist-btn svg,
+.trailer-btn svg {
+  font-size: 1.5rem;
+}
+
+/* Title and Description */
+.movie-card h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 10px 0;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Text shadow for extra depth */
+}
+
+.movie-card p {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #c4c4c4; /* Lighter color for description */
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-bar input {
+    width: 80%;
   }
-  
-  .movie-card .movie-card-front,
-  .movie-card .movie-card-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.5s;
+
+  .movie-card {
+    width: 90%;
   }
-  
-  .movie-card .movie-card-front {
-    background: #050000;
-    color: "#fff";
-    padding: 10px;
-    border-radius: 10px;
-  }
-  
-  .movie-card .movie-card-back {
-    background: #1f1f1f;
-    color: "#fff";
-    padding: 20px;
-    border-radius: 10px;
-    transform: rotateY(180deg);
-    text-align: center;
-  }
-  
-  .movie-card.flipped .movie-card-front {
-    transform: rotateY(180deg);
-  }
-  
-  .movie-card.flipped .movie-card-back {
-    transform: rotateY(0);
-  }
-  
-  .movie-card img {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-  
-  .movie-card-actions {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-  }
-  
-  .watchlist-btn,
-  .trailer-btn {
-    background-color: #19FB70;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    transition: background-color 0.3s ease;
-  }
-  
-  .watchlist-btn:hover,
-  .trailer-btn:hover {
-    background-color: #093d4d;
-  }
-  
-  .watchlist-btn svg,
-  .trailer-btn svg {
-    font-size: 1.5rem;
-  }
-  
-  .movie-card h2 {
-    font-size: 1.5rem;
-    margin: 10px 0;
-  }
-  
-  .movie-card p {
-    font-size: 1rem;
-    margin: 5px 0;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .search-bar input {
-      width: 80%;
-    }
-  
-    .movie-card {
-      width: 90%;
-    }
-  }
-  
+}

@@ -1,0 +1,78 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Darker background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px); /* Add blur effect to the background */
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #043a37, #171a1a); /* Futuristic gradient with theme colors */
+  padding: 40px; /* Increased padding for better spacing */
+  max-width: 750px; /* Increased max-width to prevent overlap */
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  transform: translateY(-50px);
+  animation: slideUp 0.5s ease-out forwards;
+  overflow-y: auto; /* Prevent content overflow */
+}
+
+.close-btn {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 8px 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #AAABAB;
+  transform: scale(1.1);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #19BFB7, 0 0 20px #AAABAB;
+}
+
+p {
+  margin: 15px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #909292; /* Adjusted for better readability */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
