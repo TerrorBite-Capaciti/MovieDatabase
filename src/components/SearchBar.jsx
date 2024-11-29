@@ -9,12 +9,17 @@ const SearchBar = ({ onSearch }) => {
       alert("Please enter a search term!");
       return;
     }
-
     const movieData = await fetchMoviesByTitle(searchQuery);
     if (movieData && movieData.Response === "True") {
       onSearch(movieData);
     } else {
       alert("No results found. Try another search!");
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -25,6 +30,7 @@ const SearchBar = ({ onSearch }) => {
         placeholder="Search for a movie or series..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleSearch}>Search</button>
     </div>
