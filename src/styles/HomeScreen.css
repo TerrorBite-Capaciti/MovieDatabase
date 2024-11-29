@@ -72,8 +72,7 @@ body {
 }
 
 .movie-list {
-  display: flex; /* Ensuring movie cards are in a row */
-  gap: 15px; /* Space between movie cards */
+  display: flex;
 }
 
 .movie-scroller::-webkit-scrollbar {

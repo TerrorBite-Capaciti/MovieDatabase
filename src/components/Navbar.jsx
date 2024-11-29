@@ -11,6 +11,8 @@ import {
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const Navbar = () => {
   const logo = "/assets/logo.png"; // Path to logo in public/assets
 
