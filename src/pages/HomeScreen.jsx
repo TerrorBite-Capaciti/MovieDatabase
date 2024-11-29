@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/HomeScreen.css';
 import MovieCard from '../components/MovieCard';
+import Slideshow from '../components/Slideshow'; // Import Slideshow
 import { fetchAll, fetchTrending, fetchComingSoon, fetchCategories } from '../utils/fetchAll';
 
 const HomeScreen = () => {
@@ -54,6 +54,8 @@ const HomeScreen = () => {
 
   return (
     <div className="home-screen">
+      <Slideshow /> {/* Place Slideshow behind the search bar */}
+
       {/* Main Content */}
       <div className="hero-section">
         <h1 className="hero-title">Discover Movies and TV Shows</h1><br />
@@ -101,6 +103,7 @@ const HomeScreen = () => {
           )}
         </div>
       </div>
+
       {/* Trending Movies Section */}
       <div className="trending-movies">
         <h2>Trending Movies</h2>
@@ -116,8 +119,6 @@ const HomeScreen = () => {
           )}
         </div>
       </div>
-      {/* Scroll-to-Top Button */}
-      {/* Add the ScrollToTopButton here */}
     </div>
   );
 };

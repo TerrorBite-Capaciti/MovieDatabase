@@ -8,6 +8,9 @@ import SearchResults from "./pages/SearchResults";
 import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar"; // Global Navbar component
 import Footer from "./components/Footer"; // Global Footer component
+import Slideshow from "./components/Slideshow";
+
+
 
 const API_KEY = "f4e3711c";
 const API_URL = "https://www.omdbapi.com/?s=popular&type=movie&apikey=" + API_KEY;
@@ -56,5 +59,7 @@ const App = () => {
     </>
   );
 };
+
+
 
 export default App;
