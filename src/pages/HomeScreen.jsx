@@ -5,7 +5,7 @@ import MovieCard from '../components/MovieCard';
 import { fetchAll, fetchTrending, fetchComingSoon, fetchCategories } from '../utils/fetchAll';
 
 const HomeScreen = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -69,6 +69,7 @@ const HomeScreen = () => {
           <button onClick={handleSearch} className="search-button">Search</button>
         </div>
       </div>
+
       {/* Featured Movies Section */}
       <div className="featured-movies">
         <h2>Featured Movies</h2>
@@ -84,6 +85,7 @@ const HomeScreen = () => {
           )}
         </div>
       </div>
+
       {/* Coming Soon Section */}
       <div className="coming-soon">
         <h2>Coming Soon</h2>
