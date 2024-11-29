@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaPlusCircle, FaPlayCircle, FaInfoCircle } from 'react-icons/fa';
-import { fetchMoviesByTitle } from '../api/omdb';  // Importing your API function
+import { fetchMoviesByTitle } from '../api/omdb'; // Import your API function
+import MovieDetailsModal from './MovieDetailsModal'; // Import the Modal
 import '../styles/moviecard.css';
 
 const MovieCard = ({ movie }) => {
   const [flipped, setFlipped] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Manage modal visibility
   const [movieDetails, setMovieDetails] = useState(null);
 
   const handleCardClick = (e) => {
-    if (!e || !e.target) return; // Ensure 'e' and 'e.target' are valid
+    if (!e || !e.target) return;
     if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
       return; // Ignore clicks on buttons
     }
@@ -17,22 +19,27 @@ const MovieCard = ({ movie }) => {
   };
 
   const handleMoreInfo = async () => {
-    // Fetch additional movie details from the API
     const details = await fetchMoviesByTitle(movie.Title);
     if (details && details.Plot) {
-      alert(`Movie Summary: ${details.Plot || 'No summary available.'}`);
+      setMovieDetails(details); // Set movie details in the state
+      setShowModal(true); // Show the modal
     } else {
       alert('Failed to fetch movie details.');
     }
   };
 
   const handleWatchTrailer = async () => {
-    // If no trailer URL is present in the movie object, fetch from OMDb API
+    console.log("Trailer URL:", movie.Trailer); // Log the trailer URL for debugging
+
     if (movie.Trailer) {
+      // If trailer URL exists in the movie object, open it
       window.open(movie.Trailer, '_blank');
     } else {
+      // If there's no trailer URL, fetch it from OMDb
       const details = await fetchMoviesByTitle(movie.Title);
       if (details && details.Trailer) {
+        // Log the fetched trailer URL to verify
+        console.log("Fetched Trailer URL:", details.Trailer);
         window.open(details.Trailer, '_blank');
       } else {
         alert('Trailer not available for this movie.');
@@ -40,14 +47,19 @@ const MovieCard = ({ movie }) => {
     }
   };
 
+  // Placeholder for the "Add to Watchlist" functionality
   const handleAddToWatchlist = () => {
-    alert(`${movie.Title} added to watchlist!`); // Placeholder functionality for adding to watchlist
+    console.log(`${movie.Title} added to watchlist!`); // Log a message for now
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Close the modal
   };
 
   return (
     <div
       className={`movie-card ${flipped ? 'flipped' : ''}`}
-      onClick={handleCardClick} // Pass handleCardClick correctly
+      onClick={handleCardClick}
     >
       {/* Front of the card */}
       <div className="movie-card-front">
@@ -99,6 +111,9 @@ const MovieCard = ({ movie }) => {
           </button>
         </div>
       </div>
+
+      {/* Modal for Movie Details */}
+      {showModal && <MovieDetailsModal movie={movieDetails} closeModal={handleCloseModal} />}
     </div>
   );
 };
