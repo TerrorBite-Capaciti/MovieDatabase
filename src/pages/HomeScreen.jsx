@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/HomeScreen.css';
+import { FaStar, FaClock, FaFire } from 'react-icons/fa'; // Importing icons for headings
+
 import MovieCard from '../components/MovieCard';
-import { fetchAll, fetchTrending, fetchComingSoon, fetchCategories } from '../utils/fetchAll';
+import Slideshow from '../components/Slideshow'; // Import Slideshow
+import { fetchAll, fetchTrending, fetchComingSoon} from '../utils/fetchAll';
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,7 +11,6 @@ const HomeScreen = () => {
   const [loading, setLoading] = useState(true);
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [comingSoonMovies, setComingSoonMovies] = useState([]);
-  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const getMoviesData = async () => {
@@ -27,10 +27,7 @@ const HomeScreen = () => {
         if (comingSoonResults.Response === "True") {
           setComingSoonMovies(comingSoonResults.Search || []);
         }
-        const categoryResults = await fetchCategories();
-        if (categoryResults.Response === "True") {
-          setCategories(categoryResults.Genres || []);
-        }
+  
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -54,6 +51,8 @@ const HomeScreen = () => {
 
   return (
     <div className="home-screen">
+      <Slideshow /> {/* Place Slideshow behind the search bar */}
+
       {/* Main Content */}
       <div className="hero-section">
         <h1 className="hero-title">Discover Movies and TV Shows</h1><br />
@@ -72,7 +71,7 @@ const HomeScreen = () => {
 
       {/* Featured Movies Section */}
       <div className="featured-movies">
-        <h2>Featured Movies</h2>
+        <h2><FaStar /> Featured Movies</h2> {/* Added icon */}
         <div className="movie-scroller">
           {loading ? (
             <p>Loading...</p>
@@ -88,7 +87,7 @@ const HomeScreen = () => {
 
       {/* Coming Soon Section */}
       <div className="coming-soon">
-        <h2>Coming Soon</h2>
+        <h2><FaClock /> Coming Soon</h2> {/* Added icon */}
         <div className="movie-scroller">
           {loading ? (
             <p>Loading...</p>
@@ -101,9 +100,10 @@ const HomeScreen = () => {
           )}
         </div>
       </div>
+
       {/* Trending Movies Section */}
       <div className="trending-movies">
-        <h2>Trending Movies</h2>
+        <h2><FaFire /> Trending Movies</h2> {/* Added icon */}
         <div className="movie-scroller">
           {loading ? (
             <p>Loading...</p>
@@ -116,8 +116,6 @@ const HomeScreen = () => {
           )}
         </div>
       </div>
-      {/* Scroll-to-Top Button */}
-      {/* Add the ScrollToTopButton here */}
     </div>
   );
 };
