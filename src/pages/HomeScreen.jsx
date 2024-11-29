@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/HomeScreen.css'; 
-import MovieCard from '../components/MovieCard';
-import { fetchAll, fetchTrending, fetchComingSoon, fetchCategories } from '../utils/fetchAll'; // Fetch functions from utils
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "../styles/HomeScreen.css";
+import MovieCard from "../components/MovieCard";
+import {
+  fetchAll,
+  fetchTrending,
+  fetchComingSoon,
+  fetchCategories,
+} from "../utils/fetchAll"; // Fetch functions from utils
 
 const HomeScreen = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -53,7 +58,8 @@ const HomeScreen = () => {
     <div className="home-screen">
       {/* Main Content */}
       <div className="hero-section">
-        <h1 className="hero-title">Discover Movies and TV Shows</h1><br/>
+        <h1 className="hero-title">Discover Movies and TV Shows</h1>
+        <br />
         <div className="search-container">
           <input
             type="text"
@@ -67,7 +73,6 @@ const HomeScreen = () => {
           </Link>
         </div>
       </div>
-            
 
       {/* Featured Movies Section */}
       <div className="featured-movies">
@@ -84,8 +89,6 @@ const HomeScreen = () => {
           )}
         </div>
       </div>
-
-
 
       {/* Coming Soon Section */}
       <div className="coming-soon">
@@ -119,7 +122,6 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      
       {/* Scroll-to-Top Button */}
       {/* Add the ScrollToTopButton here */}
     </div>

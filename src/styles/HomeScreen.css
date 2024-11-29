@@ -14,7 +14,8 @@ body, html {
 
 /* Scrollbar Styling */
 body {
-  scrollbar-width: thin;
+  scrollbar-width: thin; /* For Firefox */
+  overflow-y: scroll; /* Fallback for other browsers */
   scrollbar-color: #19BFB7 #050000;
 }
 
@@ -56,6 +57,35 @@ body {
   color: #19BFB7;
   text-align: center;
 }
+
+/*movie-scroller */
+
+.movie-scroller {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling effect */
+  gap: 10px; /* Space between movie cards */
+  padding: 10px; /* padding for aesthetics */
+}
+
+.movie-list {
+  display: flex; /* Ensuring movie cards are in a row */
+  gap: 15px; /* Space between movie cards */
+}
+
+.movie-scroller::-webkit-scrollbar {
+  height: 8px; /*  scrollbar height for horizontal scrolling */
+}
+
+.movie-scroller::-webkit-scrollbar-thumb {
+  background-color: #19BFB7; 
+  border-radius: 10px; /* Rounded corners for the scrollbar */
+}
+
+.movie-scroller::-webkit-scrollbar-track {
+  background: #050000; /* Customize scrollbar track */
+}
+
 
 /* Buttons */
 .home-button {
