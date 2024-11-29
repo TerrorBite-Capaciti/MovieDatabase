@@ -1,6 +1,8 @@
 # 🎬 Movie Database 🌌
 A feature-rich platform to explore movies and TV shows with FlickFnder
 
+[Check out the Live Version Here](https://moviedatabase-2bwq.onrender.com)
+
 ## 📖 Table of Contents
 
 - 📚[Overview](#overview)
