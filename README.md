@@ -45,14 +45,14 @@ The Movie Database is an interactive web application built using React and power
 
 ## 🎥 How It Works
 
-1. **Homescreen
-- https://github.com/user-attachments/assets/f085471e-9f8f-4aef-a34f-5a5f6b379026
+1. **Homescreen**
+   - <video src="https://github.com/user-attachments/assets/f085471e-9f8f-4aef-a34f-5a5f6b379026"></video>
 
-2. **Searching for movie/show
-- https://github.com/user-attachments/assets/90f4d865-bf56-4386-be48-8c2dbe6d24e9
-
-3. **Navigating the app
-- https://github.com/user-attachments/assets/f9c9f539-1496-4613-bb78-f929c4c316c6
+3. **Searching for movie/show**
+   - <video src="https://github.com/user-attachments/assets/90f4d865-bf56-4386-be48-8c2dbe6d24e9"></video>
+   
+3. **Navigating the app**
+   - <video src="https://github.com/user-attachments/assets/f9c9f539-1496-4613-bb78-f929c4c316c6"></video>
 
 ---
 
