@@ -3,6 +3,8 @@ A feature-rich platform to explore movies and TV shows with FlickFnder
 
 [Check out the Live Version Here](https://moviedatabase-2bwq.onrender.com)
 
+Deployment link: https://movie-database-murex-delta.vercel.app/home
+
 ## 📖 Table of Contents
 
 - 📚[Overview](#overview)
